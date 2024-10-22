@@ -88,35 +88,36 @@
   function advanceTimer() {
     remainingSeconds--;
 
+    let minutes = Math.floor(remainingSeconds/SECONDS_IN_MINUTE);
+    let seconds = remainingSeconds % SECONDS_IN_MINUTE;
+
+    let formatMin;
+    if(minutes < 10){
+      formatMin = "0" + minutes;
+        
+    }
+
+    else{
+      formatMin = minutes;
+    }
+
+    let formatSec;
+    if(seconds < 10){
+      formatSec = "0" + seconds;
+    }
+
+    else{
+      formatSec = seconds;
+    }
+
+    id("time").textContent = formatMin + ":" + formatSec;
+      
     if(remainingSeconds <= 0){
       clearInterval(timerId);
-      return;
-    }
-    else{
-      let minutes = Math.floor(remainingSeconds/SECONDS_IN_MINUTE);
-      let seconds = remainingSeconds % SECONDS_IN_MINUTE;
-
-      let formatMin;
-      if(minutes < 10){
-        formatMin = "0" + minutes;
-        
-      }
-      else{
-        formatMin = minutes;
-      }
-
-      let formatSec;
-      if(seconds < 10){
-        formatSec = "0" + seconds;
-      }
-      else{
-        formatSec = seconds;
-      }
-
-      id("time").textContent = formatMin + ":" + formatSec;
     }
     
   }
+    
 
   /** ------------------------------ Helper Functions  ------------------------------ */
 
